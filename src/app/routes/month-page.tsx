@@ -1,10 +1,20 @@
-import React from "react";
+import { useState } from "react";
+import { MonthlySelector } from "../features/monthly-report/components/monthly-selector";
 
 export const MonthPage = () => {
+  const [selectedMonth, setSelectedMonth] = useState("2025-06");
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-2xl font-bold text-blue-700">📅 月別支出ページ</h1>
-      <p className="text-gray-600 mt-2">ここでは月ごとの支出を確認できます。</p>
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">月別支出レポート</h2>
+      <MonthlySelector
+        value={selectedMonth}
+        onChange={setSelectedMonth}
+        count={24}
+        label="📅 表示月を選択"
+      />
+
+      <p className="mt-4 text-gray-600">選択中: {selectedMonth}</p>
     </div>
   );
 };
